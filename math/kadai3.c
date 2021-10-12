@@ -18,9 +18,10 @@ double stop(double num){
     return a;
 }
 int main(){
+    double shousuu=0.000001;
     double x1,x2,x3;
     x1=x2=x3=1.0;
-    while(stop(get_x1(x2,x3))>0.000001&&stop(get_x2(x1,x3))>0.000001&&stop(get_x3(x1,x2))>0.000001){
+    while(stop(get_x1(x2,x3))>shousuu&&stop(get_x2(x1,x3))>shousuu&&stop(get_x3(x1,x2))>shousuu){
         printf("誤差:%lf\n",stop(x1));
         x1=get_x1(x2,x3);
         x2=get_x2(x1,x3);
