@@ -2,8 +2,6 @@
 #include<stdio.h>
 #include<math.h>
 
-
-
 double f1(double x);
 double bibun(double a);
 
@@ -16,13 +14,15 @@ double f1(double x){
    // return 2*x*x+3*x;
     return cos(x)+log(x);
 }
+
 double bibun(double a){
     double h=1.0e-10;
-    double dfa;
+    double dfa;S
     dfa=(f1(h+a)-f1(a))/h;
     //printf("答え:%lf\n",dfa);
     return (f1(h+a)-f1(a))/h;
 }
+
 bool hantei(int i,double a){
     const double mnum=1.0e-10;
     const int i_max=100;
@@ -37,11 +37,8 @@ bool hantei(int i,double a){
 }
 void keisan(double a){
     int i=0;
-   
-   // printf("微分:%lf\n",bibun(1.0));
-    //printf("sin:%lf\n",f1(1));
     
-    do {
+     do {
             i++;
             a+=delta(a);
             printf("1:%d回 a:%lf\n",i,a);
@@ -53,8 +50,7 @@ void keisan(double a){
 int main(){
     double a=1.0;
     double c=3.0;
-  // printf("答え:%lf",f1(2));
-   // keisan(a);
+    keisan(a);
     keisan(c);
     return 0;
 }
