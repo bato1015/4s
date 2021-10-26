@@ -41,16 +41,16 @@ void keisan(double a){ //ニュートン法
      do {
             i++;
             a+=delta(a);
-            printf("1:%d回 a:%lf\n",i,a);
+            printf("%d回 x:%lf\n",i,a);
         }while(hantei(i,a));
 
-    printf("\n");    
+   // printf("\n");    
 }
 
 int main(){
-    double a=1.0; //初期値
+    //double a=1.0; //初期値
     double c=3.0;
-    keisan(a);
+    //keisan(a);
     keisan(c);
     return 0;
 }
