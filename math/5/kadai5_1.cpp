@@ -2,45 +2,59 @@
 #include<stdio.h>
 #include<math.h>
 
-int x;
-double dfa;
 
-float f1(float x);
-double bibun(double);
 
-double yutuu(double a){
-    x=a-f1(a)/bibun(a);
-    return x;
+double f1(double x);
+double bibun(double a);
+
+double delta(double a){
+    return -f1(a)/bibun(a);
 }
 
-float f1(float x){
-    float fx;
-   fx= x*sin(x)+log(x);
-    return fx;
+double f1(double x){
+    //return cos(x)+x;
+   // return 2*x*x+3*x;
+    return cos(x)+log(x);
 }
 double bibun(double a){
-    double da=a+0.1;
-   // dfa=((2*da*da+3*da)-(2*a*a+3*a))/0.1;
-    dfa=(f1(da)-f1(a))/0.1;
-    //printf("答え:%f\n",dfa);
-    return dfa;
+    double h=1.0e-10;
+    double dfa;
+    dfa=(f1(h+a)-f1(a))/h;
+    //printf("答え:%lf\n",dfa);
+    return (f1(h+a)-f1(a))/h;
 }
-void keisan(){
+bool hantei(int i,double a){
+    const double mnum=1.0e-10;
+    const int i_max=100;
+    if(i>i_max){
+        printf("error");
+        return false;
+    }else if(mnum>fabs(delta(a))){
+        printf("%d回で収束　答え%lf\n",i,a);
+        return false;
+    }
+    return true;
+}
+void keisan(double a){
     int i=0;
-    float a=10;
-    printf("微分:%lf\n",bibun(50));
-    printf("sin:%lf\n",sin(a));
+   
+   // printf("微分:%lf\n",bibun(1.0));
+    //printf("sin:%lf\n",f1(1));
     
     do {
-            a=yutuu(a);
             i++;
-            printf("a:%lf\n",a);
-        }while(i<20);
+            a+=delta(a);
+            printf("1:%d回 a:%lf\n",i,a);
+        }while(hantei(i,a));
 
+    printf("\n");    
 }
 
 int main(){
+    double a=1.0;
+    double c=3.0;
   // printf("答え:%lf",f1(2));
-    keisan();
+   // keisan(a);
+    keisan(c);
     return 0;
 }
