@@ -10,9 +10,9 @@ double delta(double a){ //傾き
 }
 
 double f1(double x){ //関数
-    //return cos(x)+x;
-   // return 2*x*x+3*x;
-    return cos(x)+log(x);
+    //return log(x)+x;
+   return x*x;
+   // return cos(x)+log(x);
 }
 
 double bibun(double a){ //微分
@@ -49,7 +49,7 @@ void keisan(double a){ //ニュートン法
 
 int main(){
     //double a=1.0; //初期値
-    double c=3.0;
+    double c=2;
     //keisan(a);
     keisan(c);
     return 0;
