@@ -5,25 +5,25 @@
 double f1(double x);
 double bibun(double a);
 
-double delta(double a){
+double delta(double a){ //傾き
     return -f1(a)/bibun(a);
 }
 
-double f1(double x){
+double f1(double x){ //関数
     //return cos(x)+x;
    // return 2*x*x+3*x;
     return cos(x)+log(x);
 }
 
-double bibun(double a){
+double bibun(double a){ //微分
     double h=1.0e-10;
-    double dfa;S
+    double dfa;
     dfa=(f1(h+a)-f1(a))/h;
     //printf("答え:%lf\n",dfa);
     return (f1(h+a)-f1(a))/h;
 }
 
-bool hantei(int i,double a){
+bool hantei(int i,double a){ //収束確認
     const double mnum=1.0e-10;
     const int i_max=100;
     if(i>i_max){
@@ -35,7 +35,7 @@ bool hantei(int i,double a){
     }
     return true;
 }
-void keisan(double a){
+void keisan(double a){ //ニュートン法
     int i=0;
     
      do {
@@ -48,7 +48,7 @@ void keisan(double a){
 }
 
 int main(){
-    double a=1.0;
+    double a=1.0; //初期値
     double c=3.0;
     keisan(a);
     keisan(c);
