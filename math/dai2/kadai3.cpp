@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -12,7 +11,6 @@ std::vector<char> alfa;              //アルファベット小文字格納
 std::vector<char> ALFA;              //アルファベット大文字格納
 std::vector<int> alfa1(100, 0);      //頻出頻度の格納
 void alfa_init();
-void num();
 void select();
 int space = 0;
 std::random_device rnd;
@@ -31,7 +29,6 @@ int main()
 
     while (ifs.get(ch))
         text.push_back(ch);
-    num();
     select();
 
     return 0;
@@ -47,19 +44,18 @@ void alfa_init()
 }
 void select()
 {
-    for (int i = 0; i < 100; i++)
-        ofs << text[rnd() % text.size()];
-}
-void num()
-{
+    std::vector<char> select_text;
     for (int i = 0; i < text.size(); i++)
     {
-        for (int n = 0; n < 26; n++)
-        {
-            if (alfa[n] == text[i] || ALFA[n] == text[i])
-                alfa1[n]++;
-        }
-        if (text[i] == 0x20)
-            space++;
+        if (isalpha(text[i]))
+            select_text.push_back(text[i]);
+        else if (text[i] == 0x10)
+            select_text.push_back(' ');
+        else if (text[i] == '\n')
+            select_text.push_back('\n');
+        else
+            select_text.push_back(' ');
     }
+    for (int i = 0; i < 100; i++)
+        ofs << select_text[rnd() % select_text.size()];
 }

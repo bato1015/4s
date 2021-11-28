@@ -28,7 +28,7 @@ void juging()
 {
     int n = 0;
     // for (int i = 0; i < text.size(); i++)
-    for (int i = 0; n < 10; i++)
+    for (int i = 0; n < 2000; i++)
     {
 
         if (isalpha(text[i]))
